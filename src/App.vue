@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import LoginView from "./views/LoginView.vue";
 import MainView from "./views/MainView.vue";
+import { ref, computed } from "vue";
+const loginName = ref("");
+const isLogin = computed(() => {
+  //loginName is not empty
+  return loginName.value === "";
+});
 </script>
 
 <template>
-  <LoginView />
+  <LoginView v-if="!isLogin" />
+  <MainView v-if="isLogin" />
 </template>
 
 <style scoped></style>
