@@ -5,12 +5,15 @@ import { ref, computed } from "vue";
 const loginName = ref("");
 const isLogin = computed(() => {
   //loginName is not empty
-  return loginName.value === "";
+  return loginName.value !== "";
 });
+const login = (userName: string): void => {
+  loginName.value = userName;
+};
 </script>
 
 <template>
-  <LoginView v-if="!isLogin" />
+  <LoginView v-if="!isLogin" @login="login" />
   <MainView v-if="isLogin" />
 </template>
 
