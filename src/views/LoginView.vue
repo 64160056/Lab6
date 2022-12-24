@@ -11,13 +11,21 @@ const login = async () => {
     console.log("Form Succes");
   }
 };
+const reset = () => {
+  form.value?.reset();
+};
 </script>
 
 <template>
   <v-app>
     <v-main class="pa-16 bg-blue-grey-darken-2">
       <v-card width="400px" class="mx-auto">
-        <v-card-title primary-title class="text-center"> Login </v-card-title>
+        <v-card-title
+          primary-title
+          class="text-center text-h6 font-weight-bold"
+        >
+          Login
+        </v-card-title>
         <v-card-text>
           <v-form ref="form" v-model="valid">
             <v-text-field
@@ -47,7 +55,7 @@ const login = async () => {
         </v-card-text>
         <v-card-actions class="justify-center">
           <v-btn color="success" @click="login"> Login </v-btn>
-          <v-btn color="error"> Clear </v-btn>
+          <v-btn color="error" @click="reset"> Clear </v-btn>
         </v-card-actions>
       </v-card>
     </v-main>
