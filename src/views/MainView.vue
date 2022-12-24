@@ -1,17 +1,26 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
+
+const theme = ref("light");
+
+function onClick() {
+  theme.value = theme.value === "light" ? "dark" : "light";
+}
+</script>
+
 <template>
   <v-app :theme="theme">
     <v-app-bar>
       <v-spacer></v-spacer>
 
       <v-btn
-        :prepend-icon="
-          theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'
-        "
+        :prepend-icon="theme === 'light' ? mdiWeatherSunny : mdiWeatherNight"
         @click="onClick"
         >Toggle Theme</v-btn
       >
     </v-app-bar>
-    <v-navigation-drawer expand-on-hover rail>
+    <v-navigation-drawer expand-on-hover rail permanent>
       <v-list>
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
@@ -45,13 +54,3 @@
     </v-main>
   </v-app>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-
-const theme = ref("light");
-
-function onClick() {
-  theme.value = theme.value === "light" ? "dark" : "light";
-}
-</script>
