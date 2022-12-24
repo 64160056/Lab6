@@ -11,6 +11,7 @@ import {
 const emit = defineEmits<{
   (e: "logout"): void;
 }>();
+const props = defineProps<{ loginName: string }>();
 const theme = ref("light");
 
 function onClick() {
@@ -37,7 +38,7 @@ const logout = () => {
       <v-list>
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-          title="Sandra Adams"
+          :title="props.loginName"
           subtitle="sandra_a88@gmailcom"
         ></v-list-item>
       </v-list>

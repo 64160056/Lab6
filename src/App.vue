@@ -26,7 +26,7 @@ onMounted(() => {
 
 <template>
   <LoginView v-if="!isLogin" @login="login" />
-  <MainView v-if="isLogin" @logout="logout" />
+  <MainView v-if="isLogin" @logout="logout" :loginName="loginName" />
 </template>
 
 <style scoped></style>
