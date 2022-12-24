@@ -10,11 +10,14 @@ const isLogin = computed(() => {
 const login = (userName: string): void => {
   loginName.value = userName;
 };
+const logout = () => {
+  loginName.value = "";
+};
 </script>
 
 <template>
   <LoginView v-if="!isLogin" @login="login" />
-  <MainView v-if="isLogin" />
+  <MainView v-if="isLogin" @logout="logout" />
 </template>
 
 <style scoped></style>
