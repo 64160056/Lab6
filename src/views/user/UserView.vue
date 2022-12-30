@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import UserCardList from "./UserCardList.vue";
 import UserDialog from "./UserDialog.vue";
 import UserList from "./UserList.vue";
 </script>
@@ -7,6 +8,7 @@ import UserList from "./UserList.vue";
   <div class="text-h1"></div>
   <UserList></UserList>
   <UserDialog></UserDialog>
+  <UserCardList></UserCardList>
 </template>
 
 <style scoped></style>
