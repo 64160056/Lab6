@@ -1,32 +1,42 @@
 <script setup lang="ts">
 import { useUserStore } from "../../stores/user";
-import { mdiDelete, mdiPencil } from "@mdi/js";
+import { mdiDelete, mdiPencil, mdiPlus } from "@mdi/js";
 const userStore = useUserStore();
 </script>
 
 <template>
-  <v-table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Login</th>
-        <th>Name</th>
-        <th>Password</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item of userStore.users" :key="item.id">
-        <td>{{ item.id }}</td>
-        <td>{{ item.login }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.password }}</td>
-        <td>
-          <v-btn :icon="mdiPencil" color="secondary"></v-btn>
-          <v-btn :icon="mdiDelete" color="error"></v-btn>
-        </td>
-      </tr>
-    </tbody>
-  </v-table>
+  <v-container>
+    <v-row>
+      <v-col cols="3" offset="9">
+        <v-btn color="primary" :prepend-icon="mdiPlus"> Add New </v-btn>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <v-table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Login</th>
+              <th>Name</th>
+              <th>Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item of userStore.users" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.login }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.password }}</td>
+              <td>
+                <v-btn :icon="mdiPencil" color="secondary"></v-btn>
+                <v-btn :icon="mdiDelete" color="error"></v-btn>
+              </td>
+            </tr>
+          </tbody> </v-table
+      ></v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <style scoped></style>
