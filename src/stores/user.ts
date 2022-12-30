@@ -1,6 +1,7 @@
 import type { User } from "@/type/User";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
+const dialog = ref(false);
 
 export const useUserStore = defineStore("user", () => {
   const lastId = 4;
@@ -14,5 +15,5 @@ export const useUserStore = defineStore("user", () => {
     const index = users.value.findIndex((item) => item.id === id);
     users.value.splice(index, 1);
   };
-  return { users, deleteUser };
+  return { users, deleteUser, dialog };
 });
