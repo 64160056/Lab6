@@ -1,7 +1,27 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useUserStore } from "../../stores/user";
+const userStore = useUserStore();
+</script>
 
 <template>
-  <div class="text-h2">User List</div>
+  <v-table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Login</th>
+        <th>Name</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item of userStore.users" :key="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.login }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.password }}</td>
+      </tr>
+    </tbody>
+  </v-table>
 </template>
 
 <style scoped></style>
