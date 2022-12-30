@@ -7,9 +7,6 @@ const userStore = useUserStore();
 <template>
   <v-row justify="center">
     <v-dialog v-model="userStore.dialog" persistent>
-      <template v-slot:activator="{ props }">
-        <v-btn color="primary" v-bind="props"> Open Dialog </v-btn>
-      </template>
       <v-card>
         <v-card-title>
           <span class="text-h5">User Profile</span>
