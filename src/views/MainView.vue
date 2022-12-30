@@ -3,7 +3,7 @@ import { ref } from "vue";
 import {
   mdiWeatherSunny,
   mdiWeatherNight,
-  mdiFolder,
+  mdiAccount,
   mdiAccountMultiple,
   mdiStar,
 } from "@mdi/js";
@@ -45,9 +45,10 @@ const logout = () => {
 
       <v-list density="compact" nav>
         <v-list-item
-          :prepend-icon="mdiFolder"
-          title="My Files"
-          value="myfiles"
+          :prepend-icon="mdiAccount"
+          title="User"
+          value="users"
+          to="/user"
         ></v-list-item>
         <v-list-item
           :prepend-icon="mdiAccountMultiple"
