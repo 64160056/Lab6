@@ -4,6 +4,15 @@ import { useUserStore } from "@/stores/user";
 import type { VForm } from "vuetify/components";
 const userStore = useUserStore();
 const form = ref<VForm | null>(null);
+const save = async () => {
+  const { valid } = await form.value!.validate();
+  if (valid) {
+    userStore.dialog = false;
+  }
+};
+const clear = () => {
+  userStore.dialog = false;
+};
 </script>
 
 <template>
@@ -50,6 +59,11 @@ const form = ref<VForm | null>(null);
                       (v) =>
                         v.length >= 8 ||
                         'Password จะต้องมีขนาดมากกว่าหรือเท่ากับ 8 ตัวอักษร',
+                      (v) =>
+                        /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(
+                          v
+                        ) ||
+                        'Password จะต้องมี ตัวอักษร เลขใหญ่ และปรพกอบด้วย Special Character',
                     ]"
                     required
                   ></v-text-field>
@@ -61,18 +75,10 @@ const form = ref<VForm | null>(null);
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn
-            color="blue-darken-1"
-            variant="text"
-            @click="userStore.dialog = false"
-          >
+          <v-btn color="blue-darken-1" variant="text" @click="clear">
             Close
           </v-btn>
-          <v-btn
-            color="blue-darken-1"
-            variant="text"
-            @click="userStore.dialog = false"
-          >
+          <v-btn color="blue-darken-1" variant="text" @click="save">
             Save
           </v-btn>
         </v-card-actions>
