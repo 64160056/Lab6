@@ -18,9 +18,22 @@ const editUser = (user: User) => {
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" md="4" v-for="item of userStore.users" :key="item.id">
+      <v-col>
         <v-card>
+          <v-btn height="150px" width="100%" class="text-h3" @click="addNewUser"
+            >+</v-btn
+          >
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="4" v-for="item of userStore.users" :key="item.id">
+        <v-card height="150px">
           <v-card-title> {{ item.id }} {{ item.login }} </v-card-title>
+          <v-card-text>{{ item.name }} {{ item.password }}</v-card-text>
+          <v-card-actions>
+            <v-btn color="error" @click="deleteUser"> Delete </v-btn>
+
+            <v-btn color="secondary" @click="editUser"> Edit </v-btn>
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
