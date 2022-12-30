@@ -2,6 +2,10 @@
 import { useUserStore } from "../../stores/user";
 import { mdiDelete, mdiPencil, mdiPlus } from "@mdi/js";
 const userStore = useUserStore();
+
+const deleteUser = (index: number): void => {
+  userStore.deleteUser(index);
+};
 </script>
 
 <template>
@@ -30,7 +34,11 @@ const userStore = useUserStore();
               <td>{{ item.password }}</td>
               <td>
                 <v-btn :icon="mdiPencil" color="secondary"></v-btn>
-                <v-btn :icon="mdiDelete" color="error"></v-btn>
+                <v-btn
+                  :icon="mdiDelete"
+                  color="error"
+                  @click="deleteUser(item.id)"
+                ></v-btn>
               </td>
             </tr>
           </tbody> </v-table

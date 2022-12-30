@@ -9,5 +9,10 @@ export const useUserStore = defineStore("user", () => {
     { id: 2, login: "user1", name: "User1", password: "Pass@1234" },
     { id: 3, login: "user2", name: "User2", password: "Pass@1234" },
   ]);
-  return { users };
+
+  const deleteUser = (id: number): void => {
+    const index = users.value.findIndex((item) => item.id === id);
+    users.value.splice(index, 1);
+  };
+  return { users, deleteUser };
 });
