@@ -4,6 +4,8 @@ import { computed, ref } from "vue";
 const dialog = ref(false);
 
 export const useUserStore = defineStore("user", () => {
+  const dialog = ref(false);
+  const editedUser = ref<User>({ id: -1, login: "", name: "", password: "" });
   const lastId = 4;
   const users = ref<User[]>([
     { id: 1, login: "admin", name: "Administrator", password: "Pass@1234" },
@@ -15,5 +17,9 @@ export const useUserStore = defineStore("user", () => {
     const index = users.value.findIndex((item) => item.id === id);
     users.value.splice(index, 1);
   };
-  return { users, deleteUser, dialog };
+
+  const clear = () => {
+    editedUser.value = { id: -1, login: "", name: "", password: "" };
+  };
+  return { users, deleteUser, dialog, editedUser };
 });

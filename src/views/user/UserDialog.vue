@@ -29,6 +29,7 @@ const clear = () => {
                 <v-col cols="12">
                   <v-text-field
                     label="Login"
+                    v-model="userStore.editedUser.login"
                     :rules="[
                       (v) => !!v || 'Login จะต้องไม่เป็นช่องว่าง',
                       (v) =>
@@ -41,6 +42,7 @@ const clear = () => {
                 <v-col cols="12">
                   <v-text-field
                     label="Name"
+                    v-model="userStore.editedUser.name"
                     :rules="[
                       (v) => !!v || 'Name จะต้องไม่เป็นช่องว่าง',
                       (v) =>
@@ -53,6 +55,7 @@ const clear = () => {
                 <v-col cols="12">
                   <v-text-field
                     label="Password*"
+                    v-model="userStore.editedUser.password"
                     type="password"
                     :rules="[
                       (v) => !!v || 'Password จะต้องไม่เป็นช่องว่าง',
@@ -67,6 +70,9 @@ const clear = () => {
                     ]"
                     required
                   ></v-text-field>
+                </v-col>
+                <v-col>
+                  {{ userStore.editedUser }}
                 </v-col>
               </v-row>
             </v-container>
