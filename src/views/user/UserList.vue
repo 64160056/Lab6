@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUserStore } from "../../stores/user";
+import { mdiDelete, mdiPencil } from "@mdi/js";
 const userStore = useUserStore();
 </script>
 
@@ -19,6 +20,10 @@ const userStore = useUserStore();
         <td>{{ item.login }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.password }}</td>
+        <td>
+          <v-btn :icon="mdiPencil" color="secondary"></v-btn>
+          <v-btn :icon="mdiDelete" color="error"></v-btn>
+        </td>
       </tr>
     </tbody>
   </v-table>
