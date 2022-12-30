@@ -7,11 +7,12 @@ const form = ref<VForm | null>(null);
 const save = async () => {
   const { valid } = await form.value!.validate();
   if (valid) {
-    userStore.dialog = false;
+    userStore.saveUser();
   }
 };
 const clear = () => {
   userStore.dialog = false;
+  userStore.clear();
 };
 </script>
 

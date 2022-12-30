@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from "../../stores/user";
 import { mdiDelete, mdiPencil, mdiPlus } from "@mdi/js";
+import type { User } from "@/type/User";
 const userStore = useUserStore();
 
 const deleteUser = (index: number): void => {
@@ -9,8 +10,8 @@ const deleteUser = (index: number): void => {
 const addNewUser = () => {
   userStore.dialog = true;
 };
-const editUser = () => {
-  userStore.dialog = true;
+const editUser = (user: User) => {
+  userStore.editUser(user);
 };
 </script>
 
@@ -44,7 +45,7 @@ const editUser = () => {
                 <v-btn
                   :icon="mdiPencil"
                   color="secondary"
-                  @click="editUser"
+                  @click="editUser(item)"
                 ></v-btn>
                 <v-btn
                   :icon="mdiDelete"

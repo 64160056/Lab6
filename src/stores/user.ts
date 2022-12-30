@@ -6,7 +6,7 @@ const dialog = ref(false);
 export const useUserStore = defineStore("user", () => {
   const dialog = ref(false);
   const editedUser = ref<User>({ id: -1, login: "", name: "", password: "" });
-  const lastId = 4;
+  let lastId = 4;
   const users = ref<User[]>([
     { id: 1, login: "admin", name: "Administrator", password: "Pass@1234" },
     { id: 2, login: "user1", name: "User1", password: "Pass@1234" },
@@ -18,8 +18,19 @@ export const useUserStore = defineStore("user", () => {
     users.value.splice(index, 1);
   };
 
+  const saveUser = () => {
+    editedUser.value.id = lastId++;
+    users.value.push(editedUser.value);
+    dialog.value = false;
+    clear();
+  };
+
+  const editUser = (user: User) => {
+    editedUser.value = user;
+    dialog.value = true;
+  };
   const clear = () => {
     editedUser.value = { id: -1, login: "", name: "", password: "" };
   };
-  return { users, deleteUser, dialog, editedUser };
+  return { users, deleteUser, dialog, editedUser, clear, saveUser, editUser };
 });
