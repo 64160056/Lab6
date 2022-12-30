@@ -19,14 +19,22 @@ export const useUserStore = defineStore("user", () => {
   };
 
   const saveUser = () => {
-    editedUser.value.id = lastId++;
-    users.value.push(editedUser.value);
+    if (editedUser.value.id < 0) {
+      editedUser.value.id = lastId++;
+      users.value.push(editedUser.value);
+    } else {
+      const index = users.value.findIndex(
+        (item) => item.id === editedUser.value.id
+      );
+      users.value[index] = editedUser.value;
+    }
+
     dialog.value = false;
     clear();
   };
 
   const editUser = (user: User) => {
-    editedUser.value = user;
+    editedUser.value = JSON.parse(JSON.stringify(user));
     dialog.value = true;
   };
   const clear = () => {
