@@ -1,0 +1,18 @@
+<script setup lang="ts">
+import { useMessageStore } from "@/stores/message";
+const messageStore = useMessageStore();
+</script>
+
+<template>
+  <div class="text-center ma-2">
+    <v-snackbar v-model="messageStore.isShow">
+      {{ messageStore.massage }}
+
+      <template v-slot:actions>
+        <v-btn color="pink" variant="text" @click="messageStore.closeMessage">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+  </div>
+</template>

@@ -11,9 +11,20 @@ export const useUserStore = defineStore("user", () => {
   const users = ref<User[]>([
     { id: 1, login: "admin", name: "Administrator", password: "Pass@1234" },
     { id: 2, login: "user1", name: "User1", password: "Pass@1234" },
-    { id: 3, login: "user2", name: "User2", password: "Pass@1234" },
+    { id: 3, login: "c", name: "User2", password: "Pass@1234" },
   ]);
 
+  const login = (loginName: string, password: string): boolean => {
+    const index = users.value.findIndex((item) => item.login === loginName);
+    if (index >= 0) {
+      const user = users.value[index];
+      if (user.password === password) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  };
   const deleteUser = (id: number): void => {
     const index = users.value.findIndex((item) => item.id === id);
     users.value.splice(index, 1);
@@ -50,5 +61,6 @@ export const useUserStore = defineStore("user", () => {
     saveUser,
     editUser,
     isTable,
+    login,
   };
 });
