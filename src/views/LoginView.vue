@@ -10,7 +10,7 @@ const form = ref<InstanceType<typeof VForm> | null>(null);
 const login = async () => {
   const { valid } = await form.value!.validate();
   if (valid) {
-    loginStore.login(loginName.value);
+    loginStore.login(loginName.value, password.value);
   }
 };
 const reset = () => {

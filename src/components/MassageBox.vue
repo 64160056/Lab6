@@ -5,7 +5,7 @@ const messageStore = useMessageStore();
 
 <template>
   <div class="text-center ma-2">
-    <v-snackbar v-model="messageStore.isShow">
+    <v-snackbar v-model="messageStore.isShow" :timeout="messageStore.timeout">
       {{ messageStore.massage }}
 
       <template v-slot:actions>

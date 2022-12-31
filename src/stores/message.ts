@@ -4,14 +4,16 @@ import { ref } from "vue";
 export const useMessageStore = defineStore("message", () => {
   const isShow = ref(false);
   const massage = ref("");
-  const showMessage = (msg: string) => {
+  const timeout = ref(2000);
+  const showMessage = (msg: string, tout: number = 2000) => {
     massage.value = msg;
     isShow.value = true;
+    timeout.value = tout;
   };
-  const closeMessage = (msg: string) => {
-    massage.value = msg;
-    isShow.value = true;
+  const closeMessage = () => {
+    massage.value = "";
+    isShow.value = false;
   };
 
-  return { isShow, massage, showMessage, closeMessage };
+  return { isShow, massage, showMessage, closeMessage, timeout };
 });
