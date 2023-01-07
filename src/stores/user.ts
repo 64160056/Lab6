@@ -1,6 +1,6 @@
 import type { User } from "@/type/User";
 import { defineStore } from "pinia";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 const dialog = ref(false);
 
 export const useUserStore = defineStore("user", () => {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useUserStore } from "../../stores/user";
-import { mdiDelete, mdiPencil, mdiPlus } from "@mdi/js";
 import type { User } from "@/type/User";
 const userStore = useUserStore();
 
